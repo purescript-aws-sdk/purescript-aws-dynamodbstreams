@@ -42,7 +42,7 @@ Encode AttributeName
 
 ``` purescript
 newtype AttributeValue
-  = AttributeValue { "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue), "NULL" :: NullOrUndefined (NullAttributeValue), "BOOL" :: NullOrUndefined (BooleanAttributeValue) }
+  = AttributeValue { "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue), "NULL" :: Maybe (NullAttributeValue), "BOOL" :: Maybe (BooleanAttributeValue) }
 ```
 
 <p>Represents the data for an attribute. You can set one, and only one, of the elements.</p> <p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued attribute is a set; duplicate values are not allowed.</p>
@@ -67,7 +67,7 @@ Constructs AttributeValue from required parameters
 #### `newAttributeValue'`
 
 ``` purescript
-newAttributeValue' :: ({ "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue), "NULL" :: NullOrUndefined (NullAttributeValue), "BOOL" :: NullOrUndefined (BooleanAttributeValue) } -> { "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue), "NULL" :: NullOrUndefined (NullAttributeValue), "BOOL" :: NullOrUndefined (BooleanAttributeValue) }) -> AttributeValue
+newAttributeValue' :: ({ "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue), "NULL" :: Maybe (NullAttributeValue), "BOOL" :: Maybe (BooleanAttributeValue) } -> { "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue), "NULL" :: Maybe (NullAttributeValue), "BOOL" :: Maybe (BooleanAttributeValue) }) -> AttributeValue
 ```
 
 Constructs AttributeValue's fields from required parameters
@@ -140,7 +140,7 @@ Encode Date
 
 ``` purescript
 newtype DescribeStreamInput
-  = DescribeStreamInput { "StreamArn" :: StreamArn, "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartShardId" :: NullOrUndefined (ShardId) }
+  = DescribeStreamInput { "StreamArn" :: StreamArn, "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartShardId" :: Maybe (ShardId) }
 ```
 
 <p>Represents the input of a <code>DescribeStream</code> operation.</p>
@@ -165,7 +165,7 @@ Constructs DescribeStreamInput from required parameters
 #### `newDescribeStreamInput'`
 
 ``` purescript
-newDescribeStreamInput' :: StreamArn -> ({ "StreamArn" :: StreamArn, "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartShardId" :: NullOrUndefined (ShardId) } -> { "StreamArn" :: StreamArn, "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartShardId" :: NullOrUndefined (ShardId) }) -> DescribeStreamInput
+newDescribeStreamInput' :: StreamArn -> ({ "StreamArn" :: StreamArn, "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartShardId" :: Maybe (ShardId) } -> { "StreamArn" :: StreamArn, "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartShardId" :: Maybe (ShardId) }) -> DescribeStreamInput
 ```
 
 Constructs DescribeStreamInput's fields from required parameters
@@ -174,7 +174,7 @@ Constructs DescribeStreamInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStreamOutput
-  = DescribeStreamOutput { "StreamDescription" :: NullOrUndefined (StreamDescription) }
+  = DescribeStreamOutput { "StreamDescription" :: Maybe (StreamDescription) }
 ```
 
 <p>Represents the output of a <code>DescribeStream</code> operation.</p>
@@ -199,7 +199,7 @@ Constructs DescribeStreamOutput from required parameters
 #### `newDescribeStreamOutput'`
 
 ``` purescript
-newDescribeStreamOutput' :: ({ "StreamDescription" :: NullOrUndefined (StreamDescription) } -> { "StreamDescription" :: NullOrUndefined (StreamDescription) }) -> DescribeStreamOutput
+newDescribeStreamOutput' :: ({ "StreamDescription" :: Maybe (StreamDescription) } -> { "StreamDescription" :: Maybe (StreamDescription) }) -> DescribeStreamOutput
 ```
 
 Constructs DescribeStreamOutput's fields from required parameters
@@ -224,7 +224,7 @@ Encode ErrorMessage
 
 ``` purescript
 newtype ExpiredIteratorException
-  = ExpiredIteratorException { message :: NullOrUndefined (ErrorMessage) }
+  = ExpiredIteratorException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15 minutes after it is retrieved using the <code>GetShardIterator</code> action.</p>
@@ -249,7 +249,7 @@ Constructs ExpiredIteratorException from required parameters
 #### `newExpiredIteratorException'`
 
 ``` purescript
-newExpiredIteratorException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ExpiredIteratorException
+newExpiredIteratorException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ExpiredIteratorException
 ```
 
 Constructs ExpiredIteratorException's fields from required parameters
@@ -258,7 +258,7 @@ Constructs ExpiredIteratorException's fields from required parameters
 
 ``` purescript
 newtype GetRecordsInput
-  = GetRecordsInput { "ShardIterator" :: ShardIterator, "Limit" :: NullOrUndefined (PositiveIntegerObject) }
+  = GetRecordsInput { "ShardIterator" :: ShardIterator, "Limit" :: Maybe (PositiveIntegerObject) }
 ```
 
 <p>Represents the input of a <code>GetRecords</code> operation.</p>
@@ -283,7 +283,7 @@ Constructs GetRecordsInput from required parameters
 #### `newGetRecordsInput'`
 
 ``` purescript
-newGetRecordsInput' :: ShardIterator -> ({ "ShardIterator" :: ShardIterator, "Limit" :: NullOrUndefined (PositiveIntegerObject) } -> { "ShardIterator" :: ShardIterator, "Limit" :: NullOrUndefined (PositiveIntegerObject) }) -> GetRecordsInput
+newGetRecordsInput' :: ShardIterator -> ({ "ShardIterator" :: ShardIterator, "Limit" :: Maybe (PositiveIntegerObject) } -> { "ShardIterator" :: ShardIterator, "Limit" :: Maybe (PositiveIntegerObject) }) -> GetRecordsInput
 ```
 
 Constructs GetRecordsInput's fields from required parameters
@@ -292,7 +292,7 @@ Constructs GetRecordsInput's fields from required parameters
 
 ``` purescript
 newtype GetRecordsOutput
-  = GetRecordsOutput { "Records" :: NullOrUndefined (RecordList), "NextShardIterator" :: NullOrUndefined (ShardIterator) }
+  = GetRecordsOutput { "Records" :: Maybe (RecordList), "NextShardIterator" :: Maybe (ShardIterator) }
 ```
 
 <p>Represents the output of a <code>GetRecords</code> operation.</p>
@@ -317,7 +317,7 @@ Constructs GetRecordsOutput from required parameters
 #### `newGetRecordsOutput'`
 
 ``` purescript
-newGetRecordsOutput' :: ({ "Records" :: NullOrUndefined (RecordList), "NextShardIterator" :: NullOrUndefined (ShardIterator) } -> { "Records" :: NullOrUndefined (RecordList), "NextShardIterator" :: NullOrUndefined (ShardIterator) }) -> GetRecordsOutput
+newGetRecordsOutput' :: ({ "Records" :: Maybe (RecordList), "NextShardIterator" :: Maybe (ShardIterator) } -> { "Records" :: Maybe (RecordList), "NextShardIterator" :: Maybe (ShardIterator) }) -> GetRecordsOutput
 ```
 
 Constructs GetRecordsOutput's fields from required parameters
@@ -326,7 +326,7 @@ Constructs GetRecordsOutput's fields from required parameters
 
 ``` purescript
 newtype GetShardIteratorInput
-  = GetShardIteratorInput { "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: NullOrUndefined (SequenceNumber) }
+  = GetShardIteratorInput { "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: Maybe (SequenceNumber) }
 ```
 
 <p>Represents the input of a <code>GetShardIterator</code> operation.</p>
@@ -351,7 +351,7 @@ Constructs GetShardIteratorInput from required parameters
 #### `newGetShardIteratorInput'`
 
 ``` purescript
-newGetShardIteratorInput' :: ShardId -> ShardIteratorType -> StreamArn -> ({ "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: NullOrUndefined (SequenceNumber) } -> { "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: NullOrUndefined (SequenceNumber) }) -> GetShardIteratorInput
+newGetShardIteratorInput' :: ShardId -> ShardIteratorType -> StreamArn -> ({ "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: Maybe (SequenceNumber) } -> { "StreamArn" :: StreamArn, "ShardId" :: ShardId, "ShardIteratorType" :: ShardIteratorType, "SequenceNumber" :: Maybe (SequenceNumber) }) -> GetShardIteratorInput
 ```
 
 Constructs GetShardIteratorInput's fields from required parameters
@@ -360,7 +360,7 @@ Constructs GetShardIteratorInput's fields from required parameters
 
 ``` purescript
 newtype GetShardIteratorOutput
-  = GetShardIteratorOutput { "ShardIterator" :: NullOrUndefined (ShardIterator) }
+  = GetShardIteratorOutput { "ShardIterator" :: Maybe (ShardIterator) }
 ```
 
 <p>Represents the output of a <code>GetShardIterator</code> operation.</p>
@@ -385,7 +385,7 @@ Constructs GetShardIteratorOutput from required parameters
 #### `newGetShardIteratorOutput'`
 
 ``` purescript
-newGetShardIteratorOutput' :: ({ "ShardIterator" :: NullOrUndefined (ShardIterator) } -> { "ShardIterator" :: NullOrUndefined (ShardIterator) }) -> GetShardIteratorOutput
+newGetShardIteratorOutput' :: ({ "ShardIterator" :: Maybe (ShardIterator) } -> { "ShardIterator" :: Maybe (ShardIterator) }) -> GetShardIteratorOutput
 ```
 
 Constructs GetShardIteratorOutput's fields from required parameters
@@ -394,7 +394,7 @@ Constructs GetShardIteratorOutput's fields from required parameters
 
 ``` purescript
 newtype Identity
-  = Identity { "PrincipalId" :: NullOrUndefined (String), "Type" :: NullOrUndefined (String) }
+  = Identity { "PrincipalId" :: Maybe (String), "Type" :: Maybe (String) }
 ```
 
 <p>Contains details about the type of identity that made the request.</p>
@@ -419,7 +419,7 @@ Constructs Identity from required parameters
 #### `newIdentity'`
 
 ``` purescript
-newIdentity' :: ({ "PrincipalId" :: NullOrUndefined (String), "Type" :: NullOrUndefined (String) } -> { "PrincipalId" :: NullOrUndefined (String), "Type" :: NullOrUndefined (String) }) -> Identity
+newIdentity' :: ({ "PrincipalId" :: Maybe (String), "Type" :: Maybe (String) } -> { "PrincipalId" :: Maybe (String), "Type" :: Maybe (String) }) -> Identity
 ```
 
 Constructs Identity's fields from required parameters
@@ -428,7 +428,7 @@ Constructs Identity's fields from required parameters
 
 ``` purescript
 newtype InternalServerError
-  = InternalServerError { message :: NullOrUndefined (ErrorMessage) }
+  = InternalServerError { message :: Maybe (ErrorMessage) }
 ```
 
 <p>An error occurred on the server side.</p>
@@ -453,7 +453,7 @@ Constructs InternalServerError from required parameters
 #### `newInternalServerError'`
 
 ``` purescript
-newInternalServerError' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InternalServerError
+newInternalServerError' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InternalServerError
 ```
 
 Constructs InternalServerError's fields from required parameters
@@ -544,7 +544,7 @@ Encode KeyType
 
 ``` purescript
 newtype LimitExceededException
-  = LimitExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = LimitExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#APIRetries">Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
@@ -569,7 +569,7 @@ Constructs LimitExceededException from required parameters
 #### `newLimitExceededException'`
 
 ``` purescript
-newLimitExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> LimitExceededException
+newLimitExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> LimitExceededException
 ```
 
 Constructs LimitExceededException's fields from required parameters
@@ -594,7 +594,7 @@ Encode ListAttributeValue
 
 ``` purescript
 newtype ListStreamsInput
-  = ListStreamsInput { "TableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartStreamArn" :: NullOrUndefined (StreamArn) }
+  = ListStreamsInput { "TableName" :: Maybe (TableName), "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartStreamArn" :: Maybe (StreamArn) }
 ```
 
 <p>Represents the input of a <code>ListStreams</code> operation.</p>
@@ -619,7 +619,7 @@ Constructs ListStreamsInput from required parameters
 #### `newListStreamsInput'`
 
 ``` purescript
-newListStreamsInput' :: ({ "TableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartStreamArn" :: NullOrUndefined (StreamArn) } -> { "TableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ExclusiveStartStreamArn" :: NullOrUndefined (StreamArn) }) -> ListStreamsInput
+newListStreamsInput' :: ({ "TableName" :: Maybe (TableName), "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartStreamArn" :: Maybe (StreamArn) } -> { "TableName" :: Maybe (TableName), "Limit" :: Maybe (PositiveIntegerObject), "ExclusiveStartStreamArn" :: Maybe (StreamArn) }) -> ListStreamsInput
 ```
 
 Constructs ListStreamsInput's fields from required parameters
@@ -628,7 +628,7 @@ Constructs ListStreamsInput's fields from required parameters
 
 ``` purescript
 newtype ListStreamsOutput
-  = ListStreamsOutput { "Streams" :: NullOrUndefined (StreamList), "LastEvaluatedStreamArn" :: NullOrUndefined (StreamArn) }
+  = ListStreamsOutput { "Streams" :: Maybe (StreamList), "LastEvaluatedStreamArn" :: Maybe (StreamArn) }
 ```
 
 <p>Represents the output of a <code>ListStreams</code> operation.</p>
@@ -653,7 +653,7 @@ Constructs ListStreamsOutput from required parameters
 #### `newListStreamsOutput'`
 
 ``` purescript
-newListStreamsOutput' :: ({ "Streams" :: NullOrUndefined (StreamList), "LastEvaluatedStreamArn" :: NullOrUndefined (StreamArn) } -> { "Streams" :: NullOrUndefined (StreamList), "LastEvaluatedStreamArn" :: NullOrUndefined (StreamArn) }) -> ListStreamsOutput
+newListStreamsOutput' :: ({ "Streams" :: Maybe (StreamList), "LastEvaluatedStreamArn" :: Maybe (StreamArn) } -> { "Streams" :: Maybe (StreamList), "LastEvaluatedStreamArn" :: Maybe (StreamArn) }) -> ListStreamsOutput
 ```
 
 Constructs ListStreamsOutput's fields from required parameters
@@ -774,7 +774,7 @@ Encode PositiveLongObject
 
 ``` purescript
 newtype Record''
-  = Record'' { eventID :: NullOrUndefined (String), eventName :: NullOrUndefined (OperationType), eventVersion :: NullOrUndefined (String), eventSource :: NullOrUndefined (String), awsRegion :: NullOrUndefined (String), dynamodb :: NullOrUndefined (StreamRecord), userIdentity :: NullOrUndefined (Identity) }
+  = Record'' { eventID :: Maybe (String), eventName :: Maybe (OperationType), eventVersion :: Maybe (String), eventSource :: Maybe (String), awsRegion :: Maybe (String), dynamodb :: Maybe (StreamRecord), userIdentity :: Maybe (Identity) }
 ```
 
 <p>A description of a unique event within a stream.</p>
@@ -799,7 +799,7 @@ Constructs Record'' from required parameters
 #### `newRecord'''`
 
 ``` purescript
-newRecord''' :: ({ eventID :: NullOrUndefined (String), eventName :: NullOrUndefined (OperationType), eventVersion :: NullOrUndefined (String), eventSource :: NullOrUndefined (String), awsRegion :: NullOrUndefined (String), dynamodb :: NullOrUndefined (StreamRecord), userIdentity :: NullOrUndefined (Identity) } -> { eventID :: NullOrUndefined (String), eventName :: NullOrUndefined (OperationType), eventVersion :: NullOrUndefined (String), eventSource :: NullOrUndefined (String), awsRegion :: NullOrUndefined (String), dynamodb :: NullOrUndefined (StreamRecord), userIdentity :: NullOrUndefined (Identity) }) -> Record''
+newRecord''' :: ({ eventID :: Maybe (String), eventName :: Maybe (OperationType), eventVersion :: Maybe (String), eventSource :: Maybe (String), awsRegion :: Maybe (String), dynamodb :: Maybe (StreamRecord), userIdentity :: Maybe (Identity) } -> { eventID :: Maybe (String), eventName :: Maybe (OperationType), eventVersion :: Maybe (String), eventSource :: Maybe (String), awsRegion :: Maybe (String), dynamodb :: Maybe (StreamRecord), userIdentity :: Maybe (Identity) }) -> Record''
 ```
 
 Constructs Record'''s fields from required parameters
@@ -824,7 +824,7 @@ Encode RecordList
 
 ``` purescript
 newtype ResourceNotFoundException
-  = ResourceNotFoundException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceNotFoundException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>The operation tried to access a nonexistent stream.</p>
@@ -849,7 +849,7 @@ Constructs ResourceNotFoundException from required parameters
 #### `newResourceNotFoundException'`
 
 ``` purescript
-newResourceNotFoundException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceNotFoundException
+newResourceNotFoundException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceNotFoundException
 ```
 
 Constructs ResourceNotFoundException's fields from required parameters
@@ -874,7 +874,7 @@ Encode SequenceNumber
 
 ``` purescript
 newtype SequenceNumberRange
-  = SequenceNumberRange { "StartingSequenceNumber" :: NullOrUndefined (SequenceNumber), "EndingSequenceNumber" :: NullOrUndefined (SequenceNumber) }
+  = SequenceNumberRange { "StartingSequenceNumber" :: Maybe (SequenceNumber), "EndingSequenceNumber" :: Maybe (SequenceNumber) }
 ```
 
 <p>The beginning and ending sequence numbers for the stream records contained within a shard.</p>
@@ -899,7 +899,7 @@ Constructs SequenceNumberRange from required parameters
 #### `newSequenceNumberRange'`
 
 ``` purescript
-newSequenceNumberRange' :: ({ "StartingSequenceNumber" :: NullOrUndefined (SequenceNumber), "EndingSequenceNumber" :: NullOrUndefined (SequenceNumber) } -> { "StartingSequenceNumber" :: NullOrUndefined (SequenceNumber), "EndingSequenceNumber" :: NullOrUndefined (SequenceNumber) }) -> SequenceNumberRange
+newSequenceNumberRange' :: ({ "StartingSequenceNumber" :: Maybe (SequenceNumber), "EndingSequenceNumber" :: Maybe (SequenceNumber) } -> { "StartingSequenceNumber" :: Maybe (SequenceNumber), "EndingSequenceNumber" :: Maybe (SequenceNumber) }) -> SequenceNumberRange
 ```
 
 Constructs SequenceNumberRange's fields from required parameters
@@ -908,7 +908,7 @@ Constructs SequenceNumberRange's fields from required parameters
 
 ``` purescript
 newtype Shard
-  = Shard { "ShardId" :: NullOrUndefined (ShardId), "SequenceNumberRange" :: NullOrUndefined (SequenceNumberRange), "ParentShardId" :: NullOrUndefined (ShardId) }
+  = Shard { "ShardId" :: Maybe (ShardId), "SequenceNumberRange" :: Maybe (SequenceNumberRange), "ParentShardId" :: Maybe (ShardId) }
 ```
 
 <p>A uniquely identified group of stream records within a stream.</p>
@@ -933,7 +933,7 @@ Constructs Shard from required parameters
 #### `newShard'`
 
 ``` purescript
-newShard' :: ({ "ShardId" :: NullOrUndefined (ShardId), "SequenceNumberRange" :: NullOrUndefined (SequenceNumberRange), "ParentShardId" :: NullOrUndefined (ShardId) } -> { "ShardId" :: NullOrUndefined (ShardId), "SequenceNumberRange" :: NullOrUndefined (SequenceNumberRange), "ParentShardId" :: NullOrUndefined (ShardId) }) -> Shard
+newShard' :: ({ "ShardId" :: Maybe (ShardId), "SequenceNumberRange" :: Maybe (SequenceNumberRange), "ParentShardId" :: Maybe (ShardId) } -> { "ShardId" :: Maybe (ShardId), "SequenceNumberRange" :: Maybe (SequenceNumberRange), "ParentShardId" :: Maybe (ShardId) }) -> Shard
 ```
 
 Constructs Shard's fields from required parameters
@@ -1006,7 +1006,7 @@ Encode ShardIteratorType
 
 ``` purescript
 newtype Stream
-  = Stream { "StreamArn" :: NullOrUndefined (StreamArn), "TableName" :: NullOrUndefined (TableName), "StreamLabel" :: NullOrUndefined (String) }
+  = Stream { "StreamArn" :: Maybe (StreamArn), "TableName" :: Maybe (TableName), "StreamLabel" :: Maybe (String) }
 ```
 
 <p>Represents all of the data describing a particular stream.</p>
@@ -1031,7 +1031,7 @@ Constructs Stream from required parameters
 #### `newStream'`
 
 ``` purescript
-newStream' :: ({ "StreamArn" :: NullOrUndefined (StreamArn), "TableName" :: NullOrUndefined (TableName), "StreamLabel" :: NullOrUndefined (String) } -> { "StreamArn" :: NullOrUndefined (StreamArn), "TableName" :: NullOrUndefined (TableName), "StreamLabel" :: NullOrUndefined (String) }) -> Stream
+newStream' :: ({ "StreamArn" :: Maybe (StreamArn), "TableName" :: Maybe (TableName), "StreamLabel" :: Maybe (String) } -> { "StreamArn" :: Maybe (StreamArn), "TableName" :: Maybe (TableName), "StreamLabel" :: Maybe (String) }) -> Stream
 ```
 
 Constructs Stream's fields from required parameters
@@ -1056,7 +1056,7 @@ Encode StreamArn
 
 ``` purescript
 newtype StreamDescription
-  = StreamDescription { "StreamArn" :: NullOrUndefined (StreamArn), "StreamLabel" :: NullOrUndefined (String), "StreamStatus" :: NullOrUndefined (StreamStatus), "StreamViewType" :: NullOrUndefined (StreamViewType), "CreationRequestDateTime" :: NullOrUndefined (Date), "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "Shards" :: NullOrUndefined (ShardDescriptionList), "LastEvaluatedShardId" :: NullOrUndefined (ShardId) }
+  = StreamDescription { "StreamArn" :: Maybe (StreamArn), "StreamLabel" :: Maybe (String), "StreamStatus" :: Maybe (StreamStatus), "StreamViewType" :: Maybe (StreamViewType), "CreationRequestDateTime" :: Maybe (Date), "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "Shards" :: Maybe (ShardDescriptionList), "LastEvaluatedShardId" :: Maybe (ShardId) }
 ```
 
 <p>Represents all of the data describing a particular stream.</p>
@@ -1081,7 +1081,7 @@ Constructs StreamDescription from required parameters
 #### `newStreamDescription'`
 
 ``` purescript
-newStreamDescription' :: ({ "StreamArn" :: NullOrUndefined (StreamArn), "StreamLabel" :: NullOrUndefined (String), "StreamStatus" :: NullOrUndefined (StreamStatus), "StreamViewType" :: NullOrUndefined (StreamViewType), "CreationRequestDateTime" :: NullOrUndefined (Date), "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "Shards" :: NullOrUndefined (ShardDescriptionList), "LastEvaluatedShardId" :: NullOrUndefined (ShardId) } -> { "StreamArn" :: NullOrUndefined (StreamArn), "StreamLabel" :: NullOrUndefined (String), "StreamStatus" :: NullOrUndefined (StreamStatus), "StreamViewType" :: NullOrUndefined (StreamViewType), "CreationRequestDateTime" :: NullOrUndefined (Date), "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "Shards" :: NullOrUndefined (ShardDescriptionList), "LastEvaluatedShardId" :: NullOrUndefined (ShardId) }) -> StreamDescription
+newStreamDescription' :: ({ "StreamArn" :: Maybe (StreamArn), "StreamLabel" :: Maybe (String), "StreamStatus" :: Maybe (StreamStatus), "StreamViewType" :: Maybe (StreamViewType), "CreationRequestDateTime" :: Maybe (Date), "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "Shards" :: Maybe (ShardDescriptionList), "LastEvaluatedShardId" :: Maybe (ShardId) } -> { "StreamArn" :: Maybe (StreamArn), "StreamLabel" :: Maybe (String), "StreamStatus" :: Maybe (StreamStatus), "StreamViewType" :: Maybe (StreamViewType), "CreationRequestDateTime" :: Maybe (Date), "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "Shards" :: Maybe (ShardDescriptionList), "LastEvaluatedShardId" :: Maybe (ShardId) }) -> StreamDescription
 ```
 
 Constructs StreamDescription's fields from required parameters
@@ -1106,7 +1106,7 @@ Encode StreamList
 
 ``` purescript
 newtype StreamRecord
-  = StreamRecord { "ApproximateCreationDateTime" :: NullOrUndefined (Date), "Keys" :: NullOrUndefined (AttributeMap), "NewImage" :: NullOrUndefined (AttributeMap), "OldImage" :: NullOrUndefined (AttributeMap), "SequenceNumber" :: NullOrUndefined (SequenceNumber), "SizeBytes" :: NullOrUndefined (PositiveLongObject), "StreamViewType" :: NullOrUndefined (StreamViewType) }
+  = StreamRecord { "ApproximateCreationDateTime" :: Maybe (Date), "Keys" :: Maybe (AttributeMap), "NewImage" :: Maybe (AttributeMap), "OldImage" :: Maybe (AttributeMap), "SequenceNumber" :: Maybe (SequenceNumber), "SizeBytes" :: Maybe (PositiveLongObject), "StreamViewType" :: Maybe (StreamViewType) }
 ```
 
 <p>A description of a single data modification that was performed on an item in a DynamoDB table.</p>
@@ -1131,7 +1131,7 @@ Constructs StreamRecord from required parameters
 #### `newStreamRecord'`
 
 ``` purescript
-newStreamRecord' :: ({ "ApproximateCreationDateTime" :: NullOrUndefined (Date), "Keys" :: NullOrUndefined (AttributeMap), "NewImage" :: NullOrUndefined (AttributeMap), "OldImage" :: NullOrUndefined (AttributeMap), "SequenceNumber" :: NullOrUndefined (SequenceNumber), "SizeBytes" :: NullOrUndefined (PositiveLongObject), "StreamViewType" :: NullOrUndefined (StreamViewType) } -> { "ApproximateCreationDateTime" :: NullOrUndefined (Date), "Keys" :: NullOrUndefined (AttributeMap), "NewImage" :: NullOrUndefined (AttributeMap), "OldImage" :: NullOrUndefined (AttributeMap), "SequenceNumber" :: NullOrUndefined (SequenceNumber), "SizeBytes" :: NullOrUndefined (PositiveLongObject), "StreamViewType" :: NullOrUndefined (StreamViewType) }) -> StreamRecord
+newStreamRecord' :: ({ "ApproximateCreationDateTime" :: Maybe (Date), "Keys" :: Maybe (AttributeMap), "NewImage" :: Maybe (AttributeMap), "OldImage" :: Maybe (AttributeMap), "SequenceNumber" :: Maybe (SequenceNumber), "SizeBytes" :: Maybe (PositiveLongObject), "StreamViewType" :: Maybe (StreamViewType) } -> { "ApproximateCreationDateTime" :: Maybe (Date), "Keys" :: Maybe (AttributeMap), "NewImage" :: Maybe (AttributeMap), "OldImage" :: Maybe (AttributeMap), "SequenceNumber" :: Maybe (SequenceNumber), "SizeBytes" :: Maybe (PositiveLongObject), "StreamViewType" :: Maybe (StreamViewType) }) -> StreamRecord
 ```
 
 Constructs StreamRecord's fields from required parameters
@@ -1220,7 +1220,7 @@ Encode TableName
 
 ``` purescript
 newtype TrimmedDataAccessException
-  = TrimmedDataAccessException { message :: NullOrUndefined (ErrorMessage) }
+  = TrimmedDataAccessException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>The operation attempted to read past the oldest stream record in a shard.</p> <p>In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream. You might receive a TrimmedDataAccessException if:</p> <ul> <li><p>You request a shard iterator with a sequence number older than the trim point (24 hours).</p> </li> <li><p>You obtain a shard iterator, but before you use the iterator in a <code>GetRecords</code> request, a stream record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer exists.</p> </li> </ul>
@@ -1245,7 +1245,7 @@ Constructs TrimmedDataAccessException from required parameters
 #### `newTrimmedDataAccessException'`
 
 ``` purescript
-newTrimmedDataAccessException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> TrimmedDataAccessException
+newTrimmedDataAccessException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> TrimmedDataAccessException
 ```
 
 Constructs TrimmedDataAccessException's fields from required parameters
